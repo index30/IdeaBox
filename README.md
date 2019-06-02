@@ -6,13 +6,22 @@ Accumulation field of your idea.
 ## Requirements
 ```
 Golang==1.12.5
+gin
 ```
 
 ## How to Use
-Comming Soon
+### Settings
+```
+$ go get github.com/gin-gonic/gin
+```
+
+### Run
+```
+$ go run main.go
+```
 
 ## TODO
-フレームワークの決定と叩き台作成
+DBの作成
 
 ## Author
 [Yusei](https://github.com/index30)
