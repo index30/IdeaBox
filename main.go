@@ -1,16 +1,34 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"html/template"
+	"io"
+	"net/http"
+
+	"github.com/labstack/echo"
 )
 
-func main() {
-	router := gin.Default()
-	router.LoadHTMLGlob("statics/templates/*.html")
+type Template struct {
+	templates *template.Template
+}
 
-	router.GET("/", func(ctx *gin.Context) {
-		ctx.HTML(200, "top.html", gin.H{})
+func (t *Template) Render(w io.Writer, name string, data interface{}, c echo.Context) error {
+	return t.templates.ExecuteTemplate(w, name, data)
+}
+
+func main() {
+	t := &Template{
+		templates: template.Must(template.ParseGlob("statics/templates/*.html")),
+	}
+	e := echo.New()
+
+	e.Renderer = t
+
+	e.GET("/", func(c echo.Context) error {
+		return c.Render(http.StatusOK, "top", echo.Map{
+			"title": "Top",
+		})
 	})
 
-	router.Run()
+	e.Logger.Fatal(e.Start(":8080"))
 }

@@ -6,13 +6,14 @@ Accumulation field of your idea.
 ## Requirements
 ```
 Golang==1.12.5
-gin
+echo
 ```
 
 ## How to Use
 ### Settings
 ```
-$ go get github.com/gin-gonic/gin
+$ go get github.com/labstack/echo
+$ go get github.com/jinzhu/gorm
 ```
 
 ### Run
