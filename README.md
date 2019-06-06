@@ -22,7 +22,26 @@ $ go run main.go
 ```
 
 ## TODO
-DBの作成
+ユーザ登録の設置とDB制作
+
+## DBMS
+### MySQL
+If you already have MySQL, this process should be skipped.
+```
+$ brew install mysql
+$ mysql.server start
+$ mysql -uroot
+```
+
+## Tips
+### MySQL
+- When you reinstall MySQL
+```
+$ rm -rf /usr/local/var/mysql
+$ brew uninstall mysql
+$ brew install mysql
+```
+
 
 ## Author
 [Yusei](https://github.com/index30)
